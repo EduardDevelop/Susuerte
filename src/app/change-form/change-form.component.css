@@ -1,0 +1,27 @@
+.container{
+   
+    padding-top:50px ;
+}
+
+.mat-form-field{
+    font-size: large;
+}
+
+button{
+    width: 130px;
+    height: 80px;
+    border-radius: 10%;
+    font-size: large;
+}
+.radio {
+    margin: 30px;
+} 
+#numberg{
+    width: 70%;
+    text-align: center;
+}
+#selectvalue{
+    width: 25%;
+    text-align: center;
+    margin: 25px;
+}

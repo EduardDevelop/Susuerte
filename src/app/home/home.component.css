@@ -1,0 +1,41 @@
+#spinner{
+    margin: auto;
+    justify-content: center;
+  align-content: center;
+  margin-top: 300px;
+  width: 200px;
+    height: 200px;
+    
+}
+#logo{
+    width: 200px;
+    height: 80px;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+}
+
+.button-container{
+display: flex;
+   
+    
+}
+
+.button{
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+    justify-content: center;
+    align-content: center;
+    margin-left: 500px;
+    margin-top: 300px;
+}
+#chance{
+    width: 150px;
+    height: 100px;
+}
+.font{
+  font-size: xx-large;
+}

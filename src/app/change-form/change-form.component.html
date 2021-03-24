@@ -1,0 +1,118 @@
+
+<div class="container">
+
+<form [formGroup]="form">
+  <mat-grid-list  cols = "3"  rowHeight = "100px" > 
+      <mat-grid-tile [colspan]="3"  [rowspan]="1">
+
+        <h2>Apuesta:  </h2>
+
+        <mat-form-field id="selectvalue" appearance="fill">
+            <mat-label>Seleccione un valor</mat-label>
+            <mat-select (selectionChange)="getValue(selecteds)"   formControlName="valorPay" [(value)]="selecteds">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let items of selected" value="{{items}}">{{items}}</mat-option>
+            
+            </mat-select>
+          </mat-form-field>
+
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1"  [rowspan]="1" >
+      <h2 >Directo</h2>
+ </mat-grid-tile>
+ <mat-grid-tile [colspan]="1"  [rowspan]="1" >
+  <h2 >Numero</h2>
+</mat-grid-tile>
+
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+       <h2 >Combinado</h2>
+</mat-grid-tile>
+
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+  <mat-form-field class="example-full-width">
+      <mat-label>4 Cifras</mat-label>
+      <input  disabled="true" matInput  value="{{fourCD}}">
+    </mat-form-field>
+    
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+  <mat-form-field id="numberg"  class="example-full-width">
+    <mat-label>Numero ganador</mat-label>
+    <input required   autocomplete="off" formControlName="numberCh"  matInput placeholder="Ej. 1234" >
+    <mat-error *ngIf="form.get('numberCh').hasError('required')">
+      El numero es requerido!
+    </mat-error>
+    <mat-error *ngIf="form.get('numberCh').hasError('maxlength')">
+      El numero no coincide con su apuesta
+    </mat-error>
+    <mat-error *ngIf="form.get('numberCh').hasError('pattern')">
+     Debe ingresar numeros
+    </mat-error>
+    <mat-error *ngIf="form.get('numberCh').hasError('minlength')">
+      El numero no coincide con su apuesta
+     </mat-error>
+  </mat-form-field>
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+  <mat-form-field class="example-full-width">
+      <mat-label>4 Cifras</mat-label>
+      <input  [disabled]="true" matInput  value="{{fourCC}}">
+    </mat-form-field>
+    
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+  <mat-form-field class="example-full-width">
+      <mat-label>3 Cifras</mat-label>
+      <input [disabled]="true" matInput  value="{{threeCD}}">
+    </mat-form-field>
+    
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1"  [rowspan]="3" >
+  <mat-radio-group formControlName="radio" aria-label="Select an option">
+    <mat-radio-button [checked]="true" (change)="handleChange()"  class="radio" value="FCD">4 Cifras directo</mat-radio-button>
+    <mat-radio-button (change)="handleChange()" class="radio" value="FCC">4 Cifras combinado</mat-radio-button>
+    <mat-radio-button (change)="handleChange()" class="radio" value="TCD">3 Cifras directo</mat-radio-button>
+    <mat-radio-button (change)="handleChange()" class="radio" value="TCC">3 Cifras combinado</mat-radio-button>
+    <mat-radio-button (change)="handleChange()" class="radio" value="P">2 Cifras (Pata)</mat-radio-button>
+    <mat-radio-button (change)="handleChange()"class="radio" value="U">1 Cifra (Uña) RAD {{radios}}</mat-radio-button>
+    
+  </mat-radio-group>
+</mat-grid-tile>
+
+
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+    <mat-form-field class="example-full-width">
+        <mat-label>3 Cifras</mat-label>
+        <input disabled="true" matInput  value="{{threeCC}}">
+      </mat-form-field>
+      
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+  <mat-form-field  class="example-full-width">
+      <mat-label>2 Cifras (Pata)</mat-label>
+      <input disabled="true" matInput  value="{{twoCD}}">
+    </mat-form-field>
+    
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+
+    
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1"  [rowspan]="1" >
+  <mat-form-field class="example-full-width">
+      <mat-label>1 Cifra (Uña)</mat-label>
+      <input disabled="true" matInput  value="{{oneCD}}">
+    </mat-form-field>
+        
+</mat-grid-tile>
+
+<br><br>
+<mat-grid-tile [colspan]="1"  [rowspan]="3" >
+<button [disabled]="!form.valid" (click)="openModalPay()"     mat-raised-button color="primary">Pagar  <mat-icon> 
+  monetization_on</mat-icon>   </button>
+      
+</mat-grid-tile>
+  </mat-grid-list >
+</form>
+  
+</div>
