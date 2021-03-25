@@ -1,6 +1,5 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ChangeFormComponent } from '../change-form/change-form.component';
 import { ModalAcceptComponent } from '../modal-accept/modal-accept.component';
 import { SignalrcustomService } from '../servicios/signalrcustom.service';
 
@@ -18,14 +17,16 @@ export class ModalPayComponent implements OnInit {
   interval;
 
   ingresado=" ";
-  restante=0;
+  restante:Number;
 
  
   ngOnInit(): void {
 
     this.servicio.emNotificax.subscribe((valor) =>{
       this.ingresado=valor;
-      this.restante=this.data.val-Number(this.ingresado);
+      this.servicio.emNotificaR.subscribe((valorR) =>{
+        this.restante=Number(valorR);
+      });
       if(this.restante==0){
         this.startTimer();
         this.dialogRef = this.dialog.open(ModalAcceptComponent,{
@@ -48,7 +49,6 @@ export class ModalPayComponent implements OnInit {
   startTimer() {
     this.interval = setInterval(() => {
       this.time++;
-      console.log("TIMER"+":"+this.time);
       if(this.time==3){
         this.servicio.emNotificaimp.emit("OK")
         this.dialog.closeAll();

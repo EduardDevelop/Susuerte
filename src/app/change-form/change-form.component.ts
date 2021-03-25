@@ -36,7 +36,6 @@ radios="";
   this.servicio.emNotificaimp.subscribe((valor) =>{
   
     if(valor=="OK"){
-      console.log("ENTREEEE");
       
     this.imprimir();
       
@@ -72,8 +71,20 @@ radios="";
     {
       this.servicio.hubConnection.invoke("SendMessage", "referencia", "0001");
       this.servicio.hubConnection.invoke("SendMessage", "numeros",this.form.controls["numberCh"].value);
+      if(this.form.controls["radio"].value=='FCD'){
+        this.servicio.hubConnection.invoke("SendMessage", "directo","");
+      }else if(this.form.controls["radio"].value=='TCD'){
+        this.servicio.hubConnection.invoke("SendMessage", "directo","");
+      }else if(this.form.controls["radio"].value=='FCC'){
+        this.servicio.hubConnection.invoke("SendMessage", "conbinado","");
+      }else if(this.form.controls["radio"].value=='TCC'){
+        this.servicio.hubConnection.invoke("SendMessage", "conbinado","");
+      }else{
+        this.servicio.hubConnection.invoke("SendMessage", "nada","");
+      }
       this.servicio.hubConnection.invoke("SendMessage", "loteria", "Medellin");
       this.servicio.hubConnection.invoke("SendMessage", "pata", "0");
+      this.servicio.hubConnection.invoke("SendMessage", "una", "0");
       this.servicio.hubConnection.invoke("SendMessage", "chance",this.form.controls["valorPay"].value);
       this.servicio.hubConnection.invoke("SendMessage", "imprimir", "");
     

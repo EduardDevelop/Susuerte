@@ -13,6 +13,7 @@ export class SignalrcustomService {
   imp=false;
   public hubConnection : HubConnection;
   emNotifica: EventEmitter<Message> = new EventEmitter();
+  emNotificaR: EventEmitter<Message> = new EventEmitter();
   emNotificax: EventEmitter<string> = new EventEmitter();
   emNotificaimp: EventEmitter<string> = new EventEmitter();
   constructor() { 
@@ -29,7 +30,10 @@ export class SignalrcustomService {
       this.ingresado=message;
       this.emNotificax.emit(message);
       
-    
+      
+      }
+      if(user=='Faltante'){
+        this.emNotificaR.emit(message);
       }
        let art : Message = JSON.parse(art1);
        this.emNotifica.emit(art);
