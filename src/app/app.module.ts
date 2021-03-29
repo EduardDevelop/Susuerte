@@ -19,6 +19,12 @@ import { ModalPayComponent } from './modal-pay/modal-pay.component';
 import {FormsModule} from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import { ModalAcceptComponent } from './modal-accept/modal-accept.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { WarningComponent } from './warning/warning.component';
+import { ChangeComponentsComponent } from './change-components/change-components.component';
+import { LoteriasComponent } from './loterias/loterias.component';
+import { JuegoComponent } from './juego/juego.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
@@ -29,6 +35,11 @@ import { ModalAcceptComponent } from './modal-accept/modal-accept.component';
     ChangeFormComponent,
     ModalPayComponent,
     ModalAcceptComponent,
+    ToolbarComponent,
+    WarningComponent,
+    ChangeComponentsComponent,
+    LoteriasComponent,
+    JuegoComponent,
 
   ],
   entryComponents:[ModalPayComponent],
@@ -47,14 +58,11 @@ import { ModalAcceptComponent } from './modal-accept/modal-accept.component';
     MatDialogModule,
     MatRadioModule,
     FormsModule,
+    MatButtonToggleModule,
   ],
   providers: [],
   exports:[
-    ModalAcceptComponent,
-    AppComponent,
-    HomeComponent,
-    ChangeFormComponent,
-    ModalPayComponent,
+    ToolbarComponent,
   ],
   bootstrap: [AppComponent]
 })

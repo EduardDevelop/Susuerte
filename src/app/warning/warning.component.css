@@ -1,0 +1,23 @@
+.btn{
+    background-image: url("src\assets\images\Advertencia.png");
+    width: 100%;
+    height: 99.5%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+button {
+    border-style: none;;
+    color: none;
+    outline:none;
+  }
+
+  button:focus {
+  border-style:none !important ;
+  text-decoration: none !important;
+  outline:none;
+
+  }
+#referencie{
+    width: 100%;
+    height: 90%;
+}

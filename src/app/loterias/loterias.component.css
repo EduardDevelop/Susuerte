@@ -1,0 +1,42 @@
+h1{
+    text-align: center;
+    font-size: xx-large;
+    margin-top: 10px;
+    color:#0000FF;
+    font-weight: bold;
+    
+}
+.container{
+    height:100%;
+    width: 100%;
+    background-image: url("/assets/images/back.jpg");
+   
+}
+.container_loterias{
+    display: flex;
+    flex-wrap: wrap;
+}
+.button{
+    width: 200px;
+    height: 170px;
+   
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+    margin-left: 80px;
+
+
+  
+}
+.button:focus{
+
+    outline: none;
+}
+#back{
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+}
+#back:focus{
+ outline: none;
+}

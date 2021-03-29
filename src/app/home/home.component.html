@@ -1,42 +1,27 @@
 
-<div class="main-content">
-    <div class="container-fluid">
-        <div class="row" >
-            <div class="col">
-                <mat-toolbar color="primary">
-                    <mat-toolbar-row>
-                        <img id="logo" src="https://www.susuerte.com/wp-content/uploads/2018/12/susuerte.png" alt="">
-                      </mat-toolbar-row>
-                </mat-toolbar>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row" >
-                <div class="col-12">
-    
-                    <mat-spinner  *ngIf="showSpinner" id="spinner"></mat-spinner>
-                   
-                </div>
-            </div>
-
-            <div class="button-container">
-                <button  class="button"  *ngIf="showButton"  mat-fab color="primary" aria-label="Example icon button with a delete icon">
-                    <mat-icon class="font"> pageview</mat-icon> <br><br><i class="font">Resultados</i>
-                </button>
-                    <button class="button"   *ngIf="showButton"  mat-fab color="primary" aria-label="Example icon button with a delete icon">
-                        <img id="chance" src="https://www.gane.com.co/wp-content/uploads/2018/07/logo-chance-e1532702346309-300x209.png" alt="x" />
+  <div class="container">
+   
+       
+                <app-toolbar ></app-toolbar>
+                <h1>Consulte y juegue aqui</h1>
+                <div class="container_buttons">
+                    <button    class="button"  >
+                        <img  src="assets/images/consultando.png" alt="x" />
                     </button>
-              
-                
-              </div>
-
-              <div class="inputs">
-                  
-              </div>
+                    <button id="chance" routerLink="/loterias" class="button" >
+                        <img  src="assets/images/jugar.png" alt="x" />
+                    </button>
+                </div>
+                 
+       
         </div>
+             
+                 
+
+
        
 
-    </div>
-</div>
+  
+
 
 

@@ -1,0 +1,34 @@
+<div class="container">
+    <app-toolbar ></app-toolbar>
+    <h1>Elija la loteria</h1>
+    
+    <div class="container_loterias">
+       
+            <mat-button-toggle-group  aria-label="Font Style">
+                <button routerLink="/juego" (click)="valor('cafeterito')" class="button"  >
+                    <img  src="assets/images/cafeterito.png" alt="x" />
+                </button>
+                <button routerLink="/juego"  (click)="valor('chontico')"  class="button" >
+                    <img  src="assets/images/chontico.png" alt="x" />
+                </button>
+                <button routerLink="/juego" (click)="valor('culona')"  class="button">
+                    <img  src="assets/images/culona.png" alt="x" />
+                </button>
+                <button routerLink="/juego" (click)="valor('dorado')"  class="button"  >
+                    <img  src="assets/images/el-dorado.png" alt="x" />
+                </button>
+                <button routerLink="/juego"(click)="valor('paisita')"   class="button"  >
+                    <img  src="assets/images/el-paisita.png" alt="x" />
+                </button>
+                <button routerLink="/juego"  (click)="valor('pijao')" class="button" >
+                    <img  src="assets/images/pijao.png" alt="x" />
+                </button>
+              </mat-button-toggle-group>   
+    </div>
+<div class="container-back">
+    <button routerLink="/first"  id="back"  value="paisita"  >
+        <img  src="assets/images/atras.png" alt="x" />
+    </button>
+</div>
+
+</div>
