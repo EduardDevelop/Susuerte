@@ -1,0 +1,36 @@
+<div class="container">
+    <app-toolbar ></app-toolbar>
+    <h1>{{titulo}}</h1>
+    
+    <div class="container_loterias">
+       
+            <mat-button-toggle-group  aria-label="Font Style">
+                <button  (click)="valor('1000')" class="button"  >
+                    <img  src="assets/images/mil.png" alt="x" />
+                </button>
+                <button   (click)="valor('2000')"  class="button" >
+                    <img  src="assets/images/dosmil.png" alt="x" />
+                </button>
+                <button  (click)="valor('5000')"  class="button">
+                    <img  src="assets/images/cincomil.png" alt="x" />
+                </button>
+                <button (click)="valor('10000')"  class="button"  >
+                    <img  src="assets/images/diezmil.png" alt="x" />
+                </button>
+                <button (click)="valor('20000')"   class="button"  >
+                    <img  src="assets/images/veintemil.png" alt="x" />
+                </button>
+                <button  (click)="valor('50000')" class="button" >
+                    <img  src="assets/images/cincuentamil.png" alt="x" />
+                </button>
+              </mat-button-toggle-group>   
+    </div>
+<div class="container-back">
+    <button (click)="enviar()"  id="back"  value="paisita"  >
+        <img  src="assets/images/atras.png" alt="x" />
+    </button>
+</div>
+<footer>
+    <img src="assets/images/virtual.png" alt="">
+</footer>
+</div>

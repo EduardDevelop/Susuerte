@@ -1,30 +1,25 @@
+.container{
+    height:100%;
+    width: 100%;
+    background-image: url("/assets/images/back.jpg");
+}
+
 h1{
     text-align: center;
     font-size: xx-large;
     margin-top: 10px;
     color:#0000FF;
     font-weight: bold;
-    
-}
-.container{
-    height:100%;
-    width: 100%;
-    background-image: url("/assets/images/back.jpg");
-   
-}
-.container_loterias{
-    display: flex;
-    flex-wrap: wrap;
 }
 .button{
     width: 200px;
-    height: 158px;
+    height: 180px;
    
     background-color: transparent !important;
     border: none;
     cursor: pointer;
-    margin-left: 80px;
-
+    margin-left: 150px;
+    margin-top: 88px;
 
   
 }
@@ -36,6 +31,7 @@ h1{
     background-color: transparent !important;
     border: none;
     cursor: pointer;
+    margin-top: 50px;
 }
 #back:focus{
  outline: none;

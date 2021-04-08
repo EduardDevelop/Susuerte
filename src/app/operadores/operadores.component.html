@@ -1,0 +1,36 @@
+<div class="container">
+    <app-toolbar ></app-toolbar>
+    <h1>Por favor elija el operador</h1>
+    
+    <div class="container_loterias">
+       
+            <mat-button-toggle-group  aria-label="Font Style">
+                <button  (click)="valor('claro')" class="button"  >
+                    <img  src="assets/images/Claro.png" alt="x" />
+                </button>
+                <button   (click)="valor('movistar')"  class="button" >
+                    <img  src="assets/images/Movistar.png" alt="x" />
+                </button>
+                <button  (click)="valor('tigo')"  class="button">
+                    <img  src="assets/images/Avantel.png" alt="x" />
+                </button>
+                <button  (click)="valor('avantel')"  class="button"  >
+                    <img  src="assets/images/Tigo.png" alt="x" />
+                </button>
+                <button (click)="valor('flash')"   class="button"  >
+                    <img  src="assets/images/uff.png" alt="x" />
+                </button>
+                <button   (click)="valor('exito')" class="button" >
+                    <img  src="assets/images/une.png" alt="x" />
+                </button>
+              </mat-button-toggle-group>   
+    </div>
+<div class="container-back">
+    <button routerLink="/first"  id="back"  value="paisita"  >
+        <img  src="assets/images/atras.png" alt="x" />
+    </button>
+</div>
+<footer>
+    <img src="assets/images/virtual.png" alt="">
+</footer>
+</div>

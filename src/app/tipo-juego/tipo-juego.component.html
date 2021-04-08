@@ -1,0 +1,20 @@
+<div class="container">
+    <app-toolbar ></app-toolbar>
+    <h1>Elija el tipo de juego</h1>
+    <button (click)="valor('Directo')" routerLink="/input"   class="button"   >
+        <img  src="assets/images/Directo.png" alt="x" />
+    </button>
+    <button (click)="valor('Combinado')" routerLink="/input"  class="button"  >
+        <img  src="assets/images/Combinado.png" alt="x" />
+    </button>
+   
+    <div class="container-back">
+        <button routerLink="/juego"  id="back"  value="paisita"  >
+            <img  src="assets/images/atras.png" alt="x" />
+        </button>
+    </div>
+  
+    <footer>
+        <img src="assets/images/virtual.png" alt="">
+    </footer>
+</div>

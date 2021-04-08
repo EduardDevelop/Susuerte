@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Message } from '../message.models';
 import { SignalrcustomService } from '../servicios/signalrcustom.service';
 
@@ -11,11 +12,25 @@ import { SignalrcustomService } from '../servicios/signalrcustom.service';
 export class HomeComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private servicio:SignalrcustomService, private router:Router) { }
 
   ngOnInit(): void {
 
    
+  }
+  navigate(valor:string){
+    this.servicio.acciones=valor;
+    if(valor=="consultar" ){
+      // this.router.navigate(['/consulta'], {  });
+    }else if(valor=="jugar"){
+
+      this.router.navigate(['/loterias'], {  });
+    }else if(valor=="giros"  ){
+       this.router.navigate(['/input'], {  });
+    }else if(valor=="recargas")
+{ 
+  this.router.navigate(['/operadores'], {  });
+} 
   }
 
 

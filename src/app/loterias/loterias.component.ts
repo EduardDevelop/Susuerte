@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { SignalrcustomService } from '../servicios/signalrcustom.service';
 
 @Component({
   selector: 'app-loterias',
@@ -7,8 +7,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./loterias.component.css']
 })
 export class LoteriasComponent implements OnInit {
-  form: FormGroup;
-  constructor() { }
+
+  constructor(private servicio: SignalrcustomService) { }
 
   ngOnInit(): void {
 
@@ -16,7 +16,7 @@ export class LoteriasComponent implements OnInit {
      
       }
       valor(valor:string){
-
+        this.servicio.loteria=valor;
         console.log("el valor es: "+valor);
         
       }

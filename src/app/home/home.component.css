@@ -20,15 +20,18 @@ h1{
 .button{
     width: 200px;
     height: 200px;
-    margin: 50px;
+
     background-color: transparent !important;
     border: none;
     cursor: pointer;
-    margin-left: 180px;
+    margin-left: 40px;
     margin-top: 120px;
   
 }
 .button:focus{
 
     outline: none;
+}
+#footer{
+    margin-top: 125px;
 }

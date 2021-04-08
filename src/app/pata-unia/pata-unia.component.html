@@ -1,0 +1,30 @@
+<div class="container">
+    <app-toolbar ></app-toolbar>
+    <h1>¿Desea añadir pata?</h1>
+        <button  (click)="valor('sip')" class="button"  >
+                    <img  src="{{linkSip}}" alt="x" />
+                </button>
+                <button   (click)="valor('nop')"  class="button" >
+                    <img  src="{{linkNop}}" alt="x" />
+                </button>
+                <h1>¿Desea añadir uña?</h1>
+                
+                <button  (click)="valor('siu')"  class="button">
+                    <img  src="{{linkSiu}}" alt="x" />
+                </button>
+                <button  (click)="valor('nou')"  class="button"  >
+                    <img  src="{{linkNou}}" alt="x" />
+                </button>
+   
+<div class="container-back">
+    <button routerLink="/juego"  id="back"    >
+        <img  src="assets/images/atras.png" alt="x" />
+    </button>
+    <button  (click)="enviar()"  id="next"  >
+        <img  src="assets/images/siguiente.png" alt="x" />
+    </button>
+</div>
+<footer>
+    <img src="assets/images/virtual.png" alt="">
+</footer>
+</div>

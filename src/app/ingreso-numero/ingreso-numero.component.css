@@ -1,0 +1,66 @@
+.container{
+    height:100%;
+    width: 100%;
+    background-image: url("/assets/images/back.jpg");
+}
+
+h1{
+    text-align: center;
+    font-size: xx-large;
+    margin-top: 10px;
+    color:#2626af;
+    font-weight: bold;
+}
+.button{
+    width: 110px;
+  
+   
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+
+
+  
+}
+.button:focus{
+
+    outline: none;
+}
+#back{
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+    margin-top: 7px;
+}
+#back:focus{
+ outline: none;
+}
+#input{
+   margin-left: 200px;
+    width: 60%;
+    height: 71px;
+    border-color: rgb(115, 219, 17);
+    border-radius: 10px;
+    border-width: 5px;
+    font-size: xx-large;
+    text-align: center;
+}
+#input:focus{
+    outline: none;
+}
+.cols{
+    margin-left: 230px;
+ 
+}
+.numbers{
+    margin-top: 16px;
+}
+#next{
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+    margin-left: 750px;
+}
+#next:focus{
+ outline: none;
+}

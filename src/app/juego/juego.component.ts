@@ -1,4 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SignalrcustomService } from '../servicios/signalrcustom.service';
 
 @Component({
   selector: 'app-juego',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JuegoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private servicio: SignalrcustomService,private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  valor(valor:string){
+    this.servicio.juego=valor;
+    console.log("el valor es: "+valor);
+    
+  }
 }

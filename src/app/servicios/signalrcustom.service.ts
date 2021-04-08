@@ -9,8 +9,24 @@ import { Message } from '../message.models';
 })
 export class SignalrcustomService {
   showSpinner=true;
+  tipoServicio="";
+  next="";
+  acciones="";
+  operador="";
+  loteria="";
+  juego="";
+  tipo="";
+  numero="";
+  pata="";
+  unia="";
+  valpata="";
+  valunia="";
+  valapuesta="";
   ingresado="";
   imp=false;
+  // ---------------------- GIROS------------------
+  numeroCelular="";
+
   public hubConnection : HubConnection;
   emNotifica: EventEmitter<Message> = new EventEmitter();
   emNotificaR: EventEmitter<Message> = new EventEmitter();

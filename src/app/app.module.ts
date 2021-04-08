@@ -25,7 +25,12 @@ import { ChangeComponentsComponent } from './change-components/change-components
 import { LoteriasComponent } from './loterias/loterias.component';
 import { JuegoComponent } from './juego/juego.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import { TipoJuegoComponent } from './tipo-juego/tipo-juego.component';
+import { IngresoNumeroComponent } from './ingreso-numero/ingreso-numero.component';
+import { BilletesComponent } from './billetes/billetes.component';
+import { PataUniaComponent } from './pata-unia/pata-unia.component';
+import { OperadoresComponent } from './operadores/operadores.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -40,6 +45,11 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ChangeComponentsComponent,
     LoteriasComponent,
     JuegoComponent,
+    TipoJuegoComponent,
+    IngresoNumeroComponent,
+    BilletesComponent,
+    PataUniaComponent,
+    OperadoresComponent,
 
   ],
   entryComponents:[ModalPayComponent],
@@ -59,6 +69,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatRadioModule,
     FormsModule,
     MatButtonToggleModule,
+    MatSnackBarModule
   ],
   providers: [],
   exports:[

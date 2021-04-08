@@ -1,0 +1,63 @@
+<div class="container">
+    <app-toolbar ></app-toolbar>
+    <h1>{{titulo}}</h1>
+    <input  autocomplete="off" [formControl]="input" autofocus id="input" type="text"><br><br>
+    
+    <br> 
+    <div class="numbers">
+        <div  class="row cols">
+            <div class="col-12">
+                <button (click)="valor('1')"    class="button"   >
+                    <img  src="assets/images/1.png" alt="x" />
+                </button>
+                <button (click)="valor('2')"     class="button"   >
+                    <img  src="assets/images/2.png" alt="x" />
+                </button>
+                <button (click)="valor('3')"    class="button"   >
+                    <img  src="assets/images/3.png" alt="x" />
+                </button>
+                <button (click)="valor('4')"   class="button"   >
+                    <img  src="assets/images/4.png" alt="x" />
+                </button>
+                <button (click)="valor('5')"   class="button"   >
+                    <img  src="assets/images/5.png" alt="x" />
+                </button>
+            </div>
+        </div>
+        <div class="row cols">
+            <div class="col-12">
+                <button (click)="valor('6')"    class="button"   >
+                    <img  src="assets/images/6.png" alt="x" />
+                </button>
+                <button (click)="valor('7')"    class="button"   >
+                    <img  src="assets/images/7.png" alt="x" />
+                </button>
+                <button (click)="valor('8')"   class="button"   >
+                    <img  src="assets/images/8.png" alt="x" />
+                </button>
+                <button (click)="valor('9')"   class="button"   >
+                    <img  src="assets/images/9.png" alt="x" />
+                </button>
+                <button (click)="valor('0')"  class="button"   >
+                    <img  src="assets/images/0.png" alt="x" />
+                </button>
+                <button placeholder="Ej. 1234" autocomplete="off" (click)="valor('borrar')"  class="button"   >
+                    <img  src="assets/images/Borrar.png" alt="x" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-back">
+        <button (click)="back()"  id="back"   >
+            <img  src="assets/images/atras.png" alt="x" />
+        </button>
+        <button (click)="enviar()"   id="next"    >
+            <img  src="assets/images/siguiente.png" alt="x" />
+        </button>
+    </div>
+    <footer>
+        <img src="assets/images/virtual.png" alt="">
+    </footer>
+</div>

@@ -5,15 +5,23 @@
                 <app-toolbar ></app-toolbar>
                 <h1>Consulte y juegue aqui</h1>
                 <div class="container_buttons">
-                    <button    class="button"  >
+                    <button  (click)="navigate('consultar')"  class="button"  >
                         <img  src="assets/images/consultando.png" alt="x" />
                     </button>
-                    <button id="chance" routerLink="/loterias" class="button" >
+                    <button  (click)="navigate('jugar')" class="button" >
                         <img  src="assets/images/jugar.png" alt="x" />
+                    </button>
+                    <button    (click)="navigate('giros')" class="button"  >
+                        <img  src="assets/images/Giros.png" alt="x" />
+                    </button>
+                    <button (click)="navigate('recargas')"  class="button" >
+                        <img  src="assets/images/Recargas.png" alt="x" />
                     </button>
                 </div>
                  
-       
+                <footer id="footer">
+                    <img src="assets/images/virtual.png" alt="">
+                </footer>
         </div>
              
                  

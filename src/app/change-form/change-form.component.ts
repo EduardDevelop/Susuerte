@@ -133,7 +133,6 @@ this.oneCD=this.transform(5*(1000*Number(this.selecteds)));
 openModalPay() {  
   let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:1000*Number(this.selecteds)}});
 
-  
 }
 
 }
