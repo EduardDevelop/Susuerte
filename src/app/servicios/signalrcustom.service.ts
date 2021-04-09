@@ -9,6 +9,7 @@ import { Message } from '../message.models';
 })
 export class SignalrcustomService {
   showSpinner=true;
+
   tipoServicio="";
   next="";
   acciones="";

@@ -18,59 +18,41 @@ export class ModalPayComponent implements OnInit {
   interval;
   tipoServicio=this.servicio.tipoServicio;
   ingresado=" ";
-  restante:Number;
+  
 
- 
+  restante:Number;
   ngOnInit(): void {
+    this.servicio.emNotificaR.subscribe((valorR) =>{
+      this.restante=Number(valorR);
+      if(this.restante==0){
+        
+        this.dialogRef = this.dialog.open(ModalAcceptComponent,{
+      
+        });
+      }
+   
+    });
     this.startTimers();
     this.servicio.emNotificax.subscribe((valor) =>{
       this.ingresado=valor;
-      this.servicio.emNotificaR.subscribe((valorR) =>{
-        this.restante=Number(valorR);
-      });
-      if(this.restante==0){
-        this.startTimer();
-        this.dialogRef = this.dialog.open(ModalAcceptComponent,{
-          width: '20%',
-          height:'20%',
-         
-          panelClass: 'my-dialog',
-        });
-        
-      }
+     
+  
     
     });
-
-  
       this.servicio.hubConnection.invoke("SendMessage", "aceptar", String(this.data.val));
-      
-   
   }
-  time=0;
+  
   timer=30;
-  startTimer() {
-    this.interval = setInterval(() => {
-      this.time++;
-      if(this.time==3){
-        this.servicio.emNotificaimp.emit("OK")
-        this.dialog.closeAll();
-       clearInterval(this.interval);
-       
-        
-      }
-      
-    },1000)
-
-    
-  }
+  
   startTimers() {
     this.interval = setInterval(() => {
       this.timer--;
       if(this.timer==0){
         this.dialog.closeAll();
        clearInterval(this.interval);
+      
+       this.servicio.hubConnection.invoke("SendMessage", "cancelar", String(this.data.val));
        this.router.navigate(['/warning'], {  });
-        
       }
       
     },1000)

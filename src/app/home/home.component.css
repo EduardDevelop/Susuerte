@@ -31,6 +31,7 @@ h1{
 .button:focus{
 
     outline: none;
+    background-color: transparent;
 }
 #footer{
     margin-top: 125px;

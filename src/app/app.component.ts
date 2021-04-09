@@ -1,6 +1,6 @@
+import { LocationStrategy } from '@angular/common';
+import { HostListener } from '@angular/core';
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import {SignalrcustomService} from './servicios/signalrcustom.service'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,17 @@ import {SignalrcustomService} from './servicios/signalrcustom.service'
 })
 export class AppComponent {
   title = 'susuerte-app';
-  constructor(){
-
+  constructor(private location: LocationStrategy){
+    history.pushState(null, null, window.location.href);  
+    this.location.onPopState(() => {
+      history.pushState(null, null, window.location.href);
+    }); 
+    
   }
+  @HostListener('window:hashchange', ['$event'])
+  hashChangeHandler(e) {
+    window.location.hash = "dontgoback";
+  }
+
+
 }

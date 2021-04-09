@@ -31,7 +31,7 @@ import { BilletesComponent } from './billetes/billetes.component';
 import { PataUniaComponent } from './pata-unia/pata-unia.component';
 import { OperadoresComponent } from './operadores/operadores.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     BilletesComponent,
     PataUniaComponent,
     OperadoresComponent,
-
+   
   ],
   entryComponents:[ModalPayComponent],
   imports: [
@@ -69,7 +69,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatRadioModule,
     FormsModule,
     MatButtonToggleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    BackButtonDisableModule.forRoot()
+   
   ],
   providers: [],
   exports:[
@@ -77,4 +79,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}
+BackButtonDisableModule.forRoot({
+  preserveScrollPosition: true
+})

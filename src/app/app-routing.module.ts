@@ -25,7 +25,8 @@ const routes: Routes = [
   {path:"pago", component:BilletesComponent},
   {path:"extras", component:PataUniaComponent},
   {path:"operadores", component:OperadoresComponent},
-  {path:"**", pathMatch:"full", redirectTo:'warning'}
+  {path:"change", component:ChangeComponentsComponent},
+  {path:"**", pathMatch:"full", redirectTo:'change'}
 
 ];
 
