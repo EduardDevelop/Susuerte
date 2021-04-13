@@ -19,10 +19,14 @@ export class SignalrcustomService {
   tipo="";
   numero="";
   pata="";
+  cedulaRemitente="";
+  cedulaRecibe="";
   unia="";
   valpata="";
+  valgiro="";
   valunia="";
   valapuesta="";
+  valrecarga="";
   ingresado="";
   imp=false;
   // ---------------------- GIROS------------------
@@ -34,7 +38,7 @@ export class SignalrcustomService {
   emNotificax: EventEmitter<string> = new EventEmitter();
   emNotificaimp: EventEmitter<string> = new EventEmitter();
   constructor() { 
-    console.log("Inicio de servicios")
+   
     let builder = new HubConnectionBuilder();
     this.hubConnection = builder.withUrl("https://localhost:5001/chathub").build();
     this.hubConnection.on("ReceiveMessage",(user, message) =>{
@@ -55,11 +59,11 @@ export class SignalrcustomService {
        let art : Message = JSON.parse(art1);
        this.emNotifica.emit(art);
        
-      console.log(user+" "+ message);
+
       
     } );
     this.hubConnection.start().then(() =>{
-      console.log('Connection started');
+   
       this.hubConnection.invoke("SendMessage", "iniciar", "").catch(function (err) {
         return console.error(err.toString());
     });

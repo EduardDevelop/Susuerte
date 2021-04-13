@@ -49,15 +49,39 @@ export class ModalPayComponent implements OnInit {
       this.timer--;
       if(this.timer==0){
         this.dialog.closeAll();
-       clearInterval(this.interval);
       
-       this.servicio.hubConnection.invoke("SendMessage", "cancelar", String(this.data.val));
-       this.router.navigate(['/warning'], {  });
+       clearInterval(this.interval);
+       this.redirect();
+       this.servicio.hubConnection.invoke("SendMessage", "cancelar");
+       
+       if(this.servicio.acciones=="giros"){
+        this.redirect();
+       }
+       if(this.servicio.acciones=="recargas"){
+        this.redirect();
+       }
+       
       }
       
     },1000)
 
     
+  }
+  redirect(){
+
+    
+    this.router.navigate(['/warning'], {  });
+    this.servicio.acciones=""
+    this.servicio.ingresado=""
+    this.servicio.juego=""
+    this.servicio.loteria=""
+    this.servicio.numero=""
+    this.servicio.numeroCelular=""
+    this.servicio.operador=""
+    this.servicio.valapuesta=""
+    this.servicio.valpata=""
+    this.servicio.valunia=""
+    this.servicio.tipo=""
   }
  
 

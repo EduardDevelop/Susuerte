@@ -34,9 +34,20 @@ if(this.servicio.pata=="no"&&this.servicio.unia=="no"){
   let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta }, disableClose: true});
 }
 if(this.servicio.pata=="si"&&this.servicio.unia=="no"){
-  this.titulo="Por favor elija el valor de la pata"
+  if(this.titulo=="Por favor elija el valór de su apuesta"){
+    let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
+    this.titulo="Por favor elija el valor de la pata"
+    this.servicio.tipoServicio="pata"
+    this.servicio.valapuesta=valor;
+    
+}else if(this.titulo=="Por favor elija el valor de la pata"){
   let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
-  this.servicio.tipoServicio="pata"
+  this.servicio.valpata=valor;  
+  
+  
+  
+}
+  
 }
 if(this.servicio.pata=="si"&&this.servicio.unia=="si"){
   
@@ -44,11 +55,22 @@ if(this.servicio.pata=="si"&&this.servicio.unia=="si"){
     let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
     this.titulo="Por favor elija el valor de la pata"
     this.servicio.tipoServicio="pata"
-}else if(this.titulo="Por favor elija el valor de la pata"){
+    this.servicio.valapuesta=valor;
+    
+}else if(this.titulo=="Por favor elija el valor de la pata"){
   let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
   this.titulo="Por favor elija el valor de la uña"
   this.servicio.tipoServicio="uña"
-}else if(this.titulo="Por favor elija el valor de la uña" ){
+  this.servicio.valpata=valor;  
+  
+  
+  
+}else if(this.titulo=="Por favor elija el valor de la uña" ){
+ 
+
+  
+  this.servicio.valunia=valor; 
+
   
   let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
   
@@ -59,13 +81,18 @@ if(this.servicio.pata=="si"&&this.servicio.unia=="si"){
 
 if(this.servicio.acciones=="recargas"){
   let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
-
+  this.servicio.valrecarga=valor;
 }
 if(this.servicio.acciones=="giros"){
   let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
-
+  this.servicio.valgiro=valor;
 }
-     
+   if(this.servicio.juego=="2"){
+    let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
+   }  
+   if(this.servicio.juego=="1"){
+    let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
+  } 
     
   }
   enviar(){

@@ -17,7 +17,7 @@ export class LoteriasComponent implements OnInit {
       }
       valor(valor:string){
         this.servicio.loteria=valor;
-        console.log("el valor es: "+valor);
+       
         
       }
   }

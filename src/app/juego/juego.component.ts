@@ -16,7 +16,7 @@ export class JuegoComponent implements OnInit {
   }
   valor(valor:string){
     this.servicio.juego=valor;
-    console.log("el valor es: "+valor);
+   
     
   }
 }

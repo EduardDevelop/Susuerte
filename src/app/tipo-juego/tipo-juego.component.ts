@@ -14,7 +14,7 @@ export class TipoJuegoComponent implements OnInit {
   }
   valor(valor:string){
     this.servicio.tipo=valor;
-    console.log("el valor es: "+valor);
+  
     
   }
 }

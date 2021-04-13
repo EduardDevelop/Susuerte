@@ -89,28 +89,29 @@ export class IngresoNumeroComponent implements OnInit {
       this.servicio.numeroCelular=this.valores.join();
       this.router.navigate(['/pago'], {  });
     } if(this.servicio.acciones=="giros"){
-      this.valores=[];
+      
       this.input.setValue("");
       this.titulo="ingrese su numero de cedula"
-      this.servicio.numeroCelular=this.valores.join();
+      this.servicio.numeroCelular=this.valores.join('');
+      this.valores=[];
     }      
-      this.servicio.numero=this.valores.join('');
+     
       }
       if(this.valores.length>0&&this.titulo=="ingrese su numero de cedula"){
-        
+          this.servicio.cedulaRemitente=this.valores.join('')
           this.valores=[];
           this.input.setValue("");
           this.titulo="ingrese el numero de cedula de quien recibe"
           
-          this.servicio.numero=this.valores.join('');
+          
           }
           if(this.valores.length>0&&this.titulo=="ingrese el numero de cedula de quien recibe"){
-            
+            this.servicio.cedulaRecibe=this.valores.join('')
             this.valores=[];
             this.input.setValue("");
             
             this.router.navigate(['/pago'], {  });
-            this.servicio.numero=this.valores.join('');
+            
             this.titulo="";
             }
       if(this.servicio.acciones=="giros"&&this.titulo=="ingrese su numero de cedula"){
@@ -134,6 +135,8 @@ export class IngresoNumeroComponent implements OnInit {
           });
           
               
+        }else{
+
         }
 
       }
@@ -157,6 +160,7 @@ export class IngresoNumeroComponent implements OnInit {
         
             
       }else if(this.valores.length==4){
+        this.servicio.numero=this.valores.join('');
         this.router.navigate(['/extras'], {  });
       }
       
@@ -171,6 +175,7 @@ export class IngresoNumeroComponent implements OnInit {
         
             
       }else if(this.valores.length==3){
+        this.servicio.numero=this.valores.join('');
         this.router.navigate(['/extras'], {  });
       }
       
@@ -185,6 +190,7 @@ export class IngresoNumeroComponent implements OnInit {
         
             
       }else if(this.valores.length==2){
+        this.servicio.numero=this.valores.join('');
         this.router.navigate(['/pago'], {  });
       }
       
@@ -199,6 +205,7 @@ export class IngresoNumeroComponent implements OnInit {
         
             
       }else if(this.valores.length==1){
+        this.servicio.numero=this.valores.join('');
         this.router.navigate(['/pago'], {  });
       }
       

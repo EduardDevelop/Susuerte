@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Message } from '../message.models';
 import { SignalrcustomService } from '../servicios/signalrcustom.service';
 
 
