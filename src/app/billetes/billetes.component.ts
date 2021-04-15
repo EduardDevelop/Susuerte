@@ -15,6 +15,11 @@ export class BilletesComponent implements OnInit {
 titulo="";
 
   ngOnInit(): void {
+    if(this.servicio.fase==2){
+      this.titulo="Por favor elija el valor de la pata";
+      this.servicio.tipoServicio="apuesta"
+      this.servicio.fase=0;
+    }else
     if(this.servicio.acciones=="jugar"){
       this.titulo="Por favor elija el valór de su apuesta";
       this.servicio.tipoServicio="apuesta"
@@ -33,7 +38,7 @@ titulo="";
 if(this.servicio.pata=="no"&&this.servicio.unia=="no"){
   let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta }, disableClose: true});
 }
-if(this.servicio.pata=="si"&&this.servicio.unia=="no"){
+if((this.servicio.pata=="si"&&this.servicio.unia=="no")){
   if(this.titulo=="Por favor elija el valór de su apuesta"){
     let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
     this.titulo="Por favor elija el valor de la pata"
@@ -48,6 +53,11 @@ if(this.servicio.pata=="si"&&this.servicio.unia=="no"){
   
 }
   
+}
+if(this.titulo=="Por favor elija el valor de la pata"&&this.servicio.fase==2){
+  let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
+  this.servicio.valpata=valor;  
+
 }
 if(this.servicio.pata=="si"&&this.servicio.unia=="si"){
   
@@ -94,6 +104,10 @@ if(this.servicio.acciones=="giros"){
     let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
   } 
     
+  }
+  other(){
+    this.router.navigate(['/input'], {  });
+    this.servicio.other=true;
   }
   enviar(){
     if(this.servicio.juego=="4" ){

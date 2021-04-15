@@ -12,10 +12,12 @@ export class SignalrcustomService {
 
   tipoServicio="";
   next="";
+  other=false;
   acciones="";
   operador="";
   loteria="";
   juego="";
+  fase=0;
   tipo="";
   numero="";
   pata="";

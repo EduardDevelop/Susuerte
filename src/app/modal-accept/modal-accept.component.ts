@@ -40,24 +40,18 @@ this.titulo="Recargas"
   imprimir()
   {
     if(this.servicio.acciones=="jugar"){
-      if(this.servicio.pata==''){
-        this.servicio.valpata='0';
-      } if(this.servicio.pata=='no'){
-        this.servicio.valpata='0';
-      }
-      if(this.servicio.unia==''){
-        this.servicio.valunia='0';
-      } if(this.servicio.unia=='no'){
-        this.servicio.valunia='0';
-      }
-      let total=Number(this.servicio.valapuesta+this.servicio.valpata+this.servicio.valunia);
-      let dato="0001"+"+"+this.servicio.loteria+"+"+this.servicio.numero+"+"+this.servicio.tipo+"+"+this.servicio.valapuesta+"+"+this.servicio.valpata+"+"+this.servicio.valunia+"+"+total;
+      let valapuesta=Number(this.servicio.valapuesta)
+      let valpata=Number(this.servicio.valpata)
+      let valunia=Number(this.servicio.valunia)
+      let total=valapuesta+valpata+valunia;
+      let totals=String(total);
+      let dato="0001"+"+"+this.servicio.loteria+"+"+this.servicio.numero+"+"+this.servicio.tipo+"+"+this.servicio.valapuesta+"+"+this.servicio.valpata+"+"+this.servicio.valunia+"+"+totals;
       this.servicio.hubConnection.invoke("SendMessage", "chance",dato);
       this.servicio.hubConnection.invoke("SendMessage", "imprimir", "");
     
     }else if(this.servicio.acciones=="recargas"){
       
-      let dato="0001"+"+"+this.servicio.operador+"+"+this.servicio.numero+"+"+this.servicio.valrecarga;
+      let dato="0001"+"+"+this.servicio.operador+"+"+this.servicio.numeroCelular+"+"+this.servicio.valrecarga;
       this.servicio.hubConnection.invoke("SendMessage", "recarga",dato);
       this.servicio.hubConnection.invoke("SendMessage", "imprimir","");
     
@@ -75,125 +69,88 @@ this.titulo="Recargas"
     this.interval = setInterval(() => {
       this.time++;
       if(this.time==3){
-      
-        
-        this.servicio.emNotificaimp.emit("OK")
+    
         this.dialog.closeAll();
        clearInterval(this.interval);
        if(this.servicio.acciones=="giros"){
         this.imprimir();
-        this.router.navigate(['/warning'], {  });
-        this.servicio.acciones=""
-    this.servicio.ingresado=""
-    this.servicio.juego=""
-    this.servicio.loteria=""
-    this.servicio.numero=""
-    this.servicio.numeroCelular=""
-    this.servicio.operador=""
-    this.servicio.valapuesta=""
-    this.servicio.valpata=""
-    this.servicio.valunia=""
-    this.servicio.tipo=""
+        this.redirect();
+
        }
        if(this.servicio.acciones=="recargas"){
-      this.imprimir();
-        this.router.navigate(['/warning'], {  });
-        this.servicio.acciones=""
-    this.servicio.ingresado=""
-    this.servicio.juego=""
-    this.servicio.loteria=""
-    this.servicio.numero=""
-    this.servicio.numeroCelular=""
-    this.servicio.operador=""
-    this.servicio.valapuesta=""
-    this.servicio.valpata=""
-    this.servicio.valunia=""
-    this.servicio.tipo=""
+        this.imprimir();
+        this.redirect();
+
        }
+       
+
        if(this.servicio.acciones=="jugar"){
+
+      if(this.servicio.fase==2){
+        
+    this.router.navigate(['/pago'], {  });
+          if(this.servicio.valpata!=""){
+          
+            
+           this.redirect();
+           this.imprimir();
+       
+
+          }
+        
+      
+      }else if(this.servicio.fase==3){
+        if(this.servicio.valpata!=""&&this.servicio.valunia!=""){
+          
+          
+          this.redirect();
+          this.imprimir();
+    
+        }
+      }else if(this.servicio.fase==4){
+        if(this.servicio.valunia!=""){
+          
+          
+          this.redirect();
+          this.imprimir();
+    
+        }
+      }
+        
         if(this.servicio.pata=="si"&&this.servicio.unia=="no"){
        
           
           if(this.servicio.valpata!=""){
-           this.router.navigate(['/warning'], {  });
+           this.redirect();
            this.imprimir();
-           this.servicio.acciones=""
-    this.servicio.ingresado=""
-    this.servicio.juego=""
-    this.servicio.loteria=""
-    this.servicio.numero=""
-    this.servicio.numeroCelular=""
-    this.servicio.operador=""
-    this.servicio.valapuesta=""
-    this.servicio.valpata=""
-    this.servicio.valunia=""
-    this.servicio.tipo=""
+       
+
           }
         
-        }
+        }else
         if(this.servicio.juego=="2"){
-          this.router.navigate(['/warning'], {  });
+          this.redirect();
           this.imprimir();
-          this.servicio.acciones=""
-    this.servicio.ingresado=""
-    this.servicio.juego=""
-    this.servicio.loteria=""
-    this.servicio.numero=""
-    this.servicio.numeroCelular=""
-    this.servicio.operador=""
-    this.servicio.valapuesta=""
-    this.servicio.valpata=""
-    this.servicio.valunia=""
-    this.servicio.tipo=""
-        }
+
+        }else
         if(this.servicio.juego=="1"){
-          this.router.navigate(['/warning'], {  });
+          this.redirect();
           this.imprimir();
-          this.servicio.acciones=""
-    this.servicio.ingresado=""
-    this.servicio.juego=""
-    this.servicio.loteria=""
-    this.servicio.numero=""
-    this.servicio.numeroCelular=""
-    this.servicio.operador=""
-    this.servicio.valapuesta=""
-    this.servicio.valpata=""
-    this.servicio.valunia=""
-    this.servicio.tipo=""
+
         }
         if(this.servicio.pata=="si"&&this.servicio.unia=="si"){
         if(this.servicio.valpata!=""&&this.servicio.valunia!=""){
           
           
-          this.router.navigate(['/warning'], {  });
+          this.redirect();
           this.imprimir();
-          this.servicio.acciones=""
-    this.servicio.ingresado=""
-    this.servicio.juego=""
-    this.servicio.loteria=""
-    this.servicio.numero=""
-    this.servicio.numeroCelular=""
-    this.servicio.operador=""
-    this.servicio.valapuesta=""
-    this.servicio.valpata=""
-    this.servicio.valunia=""
-    this.servicio.tipo=""
+    
         }
-        }
+        }else
         if(this.servicio.pata=="no"&&this.servicio.unia=="no"){
-         this.router.navigate(['/warning'], {  });
+        this.redirect();
          this.imprimir();
-         this.servicio.acciones=""
-    this.servicio.ingresado=""
-    this.servicio.juego=""
-    this.servicio.loteria=""
-    this.servicio.numero=""
-    this.servicio.numeroCelular=""
-    this.servicio.operador=""
-    this.servicio.valapuesta=""
-    this.servicio.valpata=""
-    this.servicio.valunia=""
-    this.servicio.tipo=""
+   
         }
        }
        
@@ -204,5 +161,22 @@ this.titulo="Recargas"
     },1000)
 
     
+  }
+  redirect(){
+
+    
+    this.router.navigate(['/warning'], {  });
+    
+    this.servicio.acciones=""
+    this.servicio.ingresado=""
+    this.servicio.juego=""
+    this.servicio.loteria=""
+    this.servicio.numero=""
+    this.servicio.numeroCelular=""
+    this.servicio.operador=""
+    this.servicio.valapuesta=""
+    this.servicio.valpata=""
+    this.servicio.valunia=""
+    this.servicio.tipo=""
   }
 }

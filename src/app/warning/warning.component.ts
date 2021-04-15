@@ -10,5 +10,6 @@ export class WarningComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   
   }
 }

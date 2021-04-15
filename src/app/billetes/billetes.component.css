@@ -2,7 +2,7 @@ h1{
     text-align: center;
     font-size: xx-large;
     margin-top: 10px;
-    color:#0000FF;
+    color:#0060AF;
     font-weight: bold;
     
 }
@@ -23,7 +23,7 @@ h1{
     background-color: transparent !important;
     border: none;
     cursor: pointer;
-    margin-left: 80px;
+    margin-left: 100px;
 
 
   
@@ -40,3 +40,13 @@ h1{
 #back:focus{
  outline: none;
 }
+#other{
+    margin-left: 300px;
+    margin-top: -10px;
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+}
+#other:focus{
+    outline: none;
+   }

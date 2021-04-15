@@ -20,12 +20,17 @@ export class ModalPayComponent implements OnInit {
   ingresado=" ";
   
 
-  restante:Number;
+  restante=" ";
+  restantex:Number;
   ngOnInit(): void {
     this.servicio.emNotificaR.subscribe((valorR) =>{
-      this.restante=Number(valorR);
-      if(this.restante==0){
-        
+     
+      this.restante=String(valorR);
+      this.restantex=Number(this.restante)
+      if(this.restantex==0){
+        this.dialog.closeAll();
+      
+       clearInterval(this.interval);
         this.dialogRef = this.dialog.open(ModalAcceptComponent,{
       
         });
@@ -35,7 +40,7 @@ export class ModalPayComponent implements OnInit {
     this.startTimers();
     this.servicio.emNotificax.subscribe((valor) =>{
       this.ingresado=valor;
-     
+      this.timer=30;
   
     
     });
@@ -51,9 +56,29 @@ export class ModalPayComponent implements OnInit {
         this.dialog.closeAll();
       
        clearInterval(this.interval);
-       this.redirect();
-       this.servicio.hubConnection.invoke("SendMessage", "cancelar");
-       
+      
+       if(Number(this.ingresado)==0){
+        this.servicio.hubConnection.invoke("SendMessage", "cancelar", "").catch(function (err) {
+          return console.error(err.toString());
+          
+      });
+      
+       }else if(Number(this.ingresado)!=0){
+        this.dialogRef = this.dialog.open(ModalAcceptComponent,{
+          
+        });
+        if(this.servicio.acciones=="recargas"){
+          this.servicio.valrecarga=this.ingresado;
+        }else if(this.servicio.acciones=="giros"){
+          this.servicio.valgiro=this.ingresado;
+        }else if(this.servicio.acciones=="jugar"){
+          this.servicio.valapuesta=this.ingresado;
+        }
+        
+
+        this.imprimir();
+       }
+     
        if(this.servicio.acciones=="giros"){
         this.redirect();
        }
@@ -67,10 +92,38 @@ export class ModalPayComponent implements OnInit {
 
     
   }
+  imprimir()
+  {
+    if(this.servicio.acciones=="jugar"){
+      let valapuesta=Number(this.servicio.valapuesta)
+      let valpata=Number(this.servicio.valpata)
+      let valunia=Number(this.servicio.valunia)
+      let total=valapuesta+valpata+valunia;
+      let totals=String(total);
+      let dato="0001"+"+"+this.servicio.loteria+"+"+this.servicio.numero+"+"+this.servicio.tipo+"+"+this.servicio.valapuesta+"+"+this.servicio.valpata+"+"+this.servicio.valunia+"+"+totals;
+      this.servicio.hubConnection.invoke("SendMessage", "chance",dato);
+      this.servicio.hubConnection.invoke("SendMessage", "imprimir", "");
+    
+    }else if(this.servicio.acciones=="recargas"){
+      
+      let dato="0001"+"+"+this.servicio.operador+"+"+this.servicio.numeroCelular+"+"+this.servicio.valrecarga;
+      this.servicio.hubConnection.invoke("SendMessage", "recarga",dato);
+      this.servicio.hubConnection.invoke("SendMessage", "imprimir","");
+    
+    }
+    if(this.servicio.acciones=="giros"){
+      let dato="0001"+"+"+this.servicio.numeroCelular+"+"+this.servicio.cedulaRemitente+"+"+this.servicio.cedulaRecibe+"+"+this.servicio.valgiro;
+      this.servicio.hubConnection.invoke("SendMessage", "giro",dato);
+      this.servicio.hubConnection.invoke("SendMessage", "imprimir","");
+    
+    }
+    
+  }
   redirect(){
 
     
     this.router.navigate(['/warning'], {  });
+    
     this.servicio.acciones=""
     this.servicio.ingresado=""
     this.servicio.juego=""
@@ -82,6 +135,7 @@ export class ModalPayComponent implements OnInit {
     this.servicio.valpata=""
     this.servicio.valunia=""
     this.servicio.tipo=""
+    this.servicio.other=false;
   }
  
 
