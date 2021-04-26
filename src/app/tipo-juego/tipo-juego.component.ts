@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SignalrcustomService } from '../servicios/signalrcustom.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { SignalrcustomService } from '../servicios/signalrcustom.service';
 })
 export class TipoJuegoComponent implements OnInit {
 
-  constructor(private servicio: SignalrcustomService) { }
+  constructor(private servicio: SignalrcustomService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -16,5 +17,9 @@ export class TipoJuegoComponent implements OnInit {
     this.servicio.tipo=valor;
   
     
+  }
+  back(){
+    this.router.navigate(['/juego'], {  });
+    this.servicio.juego=""
   }
 }

@@ -16,6 +16,7 @@ export class ChangeComponentsComponent implements OnInit {
     this.servicio.emNotifica.subscribe((valor) =>{
       this.showSpinner=this.servicio.showSpinner;
       this.router.navigate(["/warning"]);
+      this.showSpinner=false;
     });
 
     

@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:"extras", component:PataUniaComponent},
   {path:"operadores", component:OperadoresComponent},
   {path:"change", component:ChangeComponentsComponent},
-  {path:"**", pathMatch:"full", redirectTo:'change'}
+  
 
 ];
 

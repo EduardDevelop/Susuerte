@@ -13,6 +13,7 @@ export class ModalAcceptComponent implements OnInit {
 titulo=''
 dialogRef:any;
 interval;
+time=0;
   constructor(private servicio:SignalrcustomService,public dialog: MatDialog, private router:Router) { 
 if(this.servicio.acciones=='jugar'){
   this.titulo="¡Mucha Suerte!"
@@ -22,7 +23,7 @@ this.titulo="Recargas"
   this.titulo="Giro"
   }
   }
-  time=0;
+ 
   restante:Number;
   singal="";
   ngOnInit(): void {
@@ -40,12 +41,14 @@ this.titulo="Recargas"
   imprimir()
   {
     if(this.servicio.acciones=="jugar"){
-      let valapuesta=Number(this.servicio.valapuesta)
-      let valpata=Number(this.servicio.valpata)
-      let valunia=Number(this.servicio.valunia)
+      let valapuesta=parseFloat(this.servicio.valapuesta);
+      let valpata=parseFloat(this.servicio.valpata)
+      let valunia=parseFloat(this.servicio.valunia)
       let total=valapuesta+valpata+valunia;
       let totals=String(total);
       let dato="0001"+"+"+this.servicio.loteria+"+"+this.servicio.numero+"+"+this.servicio.tipo+"+"+this.servicio.valapuesta+"+"+this.servicio.valpata+"+"+this.servicio.valunia+"+"+totals;
+      console.log(dato);
+      
       this.servicio.hubConnection.invoke("SendMessage", "chance",dato);
       this.servicio.hubConnection.invoke("SendMessage", "imprimir", "");
     
@@ -69,18 +72,17 @@ this.titulo="Recargas"
     this.interval = setInterval(() => {
       this.time++;
       if(this.time==3){
-    
+       
         this.dialog.closeAll();
        clearInterval(this.interval);
        if(this.servicio.acciones=="giros"){
-        this.imprimir();
+       
         this.redirect();
 
        }
        if(this.servicio.acciones=="recargas"){
-        this.imprimir();
         this.redirect();
-
+     
        }
        
 
@@ -90,29 +92,34 @@ this.titulo="Recargas"
         
     this.router.navigate(['/pago'], {  });
           if(this.servicio.valpata!=""){
+        
           
             
            this.redirect();
-           this.imprimir();
+          
        
 
           }
         
       
       }else if(this.servicio.fase==3){
-        if(this.servicio.valpata!=""&&this.servicio.valunia!=""){
+        this.router.navigate(['/pago'], {  });
+        if(this.servicio.valpata!=""&&this.servicio.valunia==""){
+          this.router.navigate(['/pago'], {  });
           
           
-          this.redirect();
-          this.imprimir();
     
+        }else if(this.servicio.valpata!=""&&this.servicio.valunia!=""){
+          this.redirect();
+         
         }
       }else if(this.servicio.fase==4){
+        this.router.navigate(['/pago'], {  });
         if(this.servicio.valunia!=""){
           
           
           this.redirect();
-          this.imprimir();
+         
     
         }
       }
@@ -122,7 +129,7 @@ this.titulo="Recargas"
           
           if(this.servicio.valpata!=""){
            this.redirect();
-           this.imprimir();
+          
        
 
           }
@@ -130,26 +137,25 @@ this.titulo="Recargas"
         }else
         if(this.servicio.juego=="2"){
           this.redirect();
-          this.imprimir();
+          
 
         }else
         if(this.servicio.juego=="1"){
           this.redirect();
-          this.imprimir();
+       
 
         }
         if(this.servicio.pata=="si"&&this.servicio.unia=="si"){
         if(this.servicio.valpata!=""&&this.servicio.valunia!=""){
-          
-          
+
           this.redirect();
-          this.imprimir();
+        
     
         }
         }else
         if(this.servicio.pata=="no"&&this.servicio.unia=="no"){
         this.redirect();
-         this.imprimir();
+     
    
         }
        }
@@ -166,7 +172,7 @@ this.titulo="Recargas"
 
     
     this.router.navigate(['/warning'], {  });
-    
+    this.imprimir();
     this.servicio.acciones=""
     this.servicio.ingresado=""
     this.servicio.juego=""
@@ -178,5 +184,8 @@ this.titulo="Recargas"
     this.servicio.valpata=""
     this.servicio.valunia=""
     this.servicio.tipo=""
+    this.servicio.fase=0
+    this.servicio.pata=""
+    this.servicio.unia=""
   }
 }

@@ -15,6 +15,7 @@ export class SignalrcustomService {
   other=false;
   acciones="";
   operador="";
+  titulo="";
   loteria="";
   juego="";
   fase=0;

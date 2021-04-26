@@ -19,17 +19,18 @@ export class ModalPayComponent implements OnInit {
   tipoServicio=this.servicio.tipoServicio;
   ingresado=" ";
   
-
+  timer=30;
   restante=" ";
   restantex:Number;
   ngOnInit(): void {
+   
     this.servicio.emNotificaR.subscribe((valorR) =>{
      
       this.restante=String(valorR);
       this.restantex=Number(this.restante)
       if(this.restantex==0){
         this.dialog.closeAll();
-      
+        
        clearInterval(this.interval);
         this.dialogRef = this.dialog.open(ModalAcceptComponent,{
       
@@ -47,7 +48,7 @@ export class ModalPayComponent implements OnInit {
       this.servicio.hubConnection.invoke("SendMessage", "aceptar", String(this.data.val));
   }
   
-  timer=30;
+ 
   
   startTimers() {
     this.interval = setInterval(() => {
@@ -62,29 +63,76 @@ export class ModalPayComponent implements OnInit {
           return console.error(err.toString());
           
       });
-      
+      this.redirect();
        }else if(Number(this.ingresado)!=0){
         this.dialogRef = this.dialog.open(ModalAcceptComponent,{
-          
+         
         });
+        
         if(this.servicio.acciones=="recargas"){
           this.servicio.valrecarga=this.ingresado;
         }else if(this.servicio.acciones=="giros"){
           this.servicio.valgiro=this.ingresado;
         }else if(this.servicio.acciones=="jugar"){
-          this.servicio.valapuesta=this.ingresado;
-        }
-        
+          if(this.servicio.juego=='4'||this.servicio.juego=='3'){
+            if(this.servicio.pata=='si'&&this.servicio.unia=='si'){
+              if(this.servicio.valpata==""){
+                this.servicio.valapuesta=this.ingresado
+                this.servicio.valpata='0'
+                this.servicio.valunia='0'
+              } if(this.servicio.valapuesta!=""){
+                this.servicio.valpata=this.ingresado
+               
+                this.servicio.valunia='0'
 
-        this.imprimir();
+              } if(this.servicio.valapuesta!=""&&this.servicio.valpata!=""&&parseFloat(this.servicio.valpata)==parseFloat(this.data.val)){
+                this.servicio.valunia=this.ingresado
+              }else {
+                this.servicio.valunia='0'
+              }
+            }
+            if(this.servicio.pata=="si"&&this.servicio.unia=="no"){
+              if(this.servicio.valpata==""){
+                this.servicio.valapuesta=this.ingresado
+                this.servicio.valpata='0'
+                this.servicio.valunia='0'
+              } if(this.servicio.valapuesta!=""){
+                this.servicio.valpata=this.ingresado
+               
+                this.servicio.valunia='0'
+
+              } 
+            }
+            if(this.servicio.pata=="no"&&this.servicio.unia=="si"){
+              if(this.servicio.valunia==""){
+                this.servicio.valapuesta=this.ingresado
+                this.servicio.valpata='0'
+                this.servicio.valunia='0'
+              } if(this.servicio.valapuesta!=""){
+                this.servicio.valunia=this.ingresado
+               
+                this.servicio.valunia='0'
+
+              } 
+            }
+          }
+          if(this.servicio.juego=='2'){
+            this.servicio.valpata='0'
+            this.servicio.valunia='0'
+            this.servicio.valapuesta=this.ingresado;
+          }else if(this.servicio.juego=="1"){
+            this.servicio.valpata='0'
+            this.servicio.valunia='0'
+            this.servicio.valapuesta=this.ingresado;
+          }
+          
+        }
+   
+
+       
        }
      
-       if(this.servicio.acciones=="giros"){
-        this.redirect();
-       }
-       if(this.servicio.acciones=="recargas"){
-        this.redirect();
-       }
+     
        
       }
       
@@ -92,34 +140,10 @@ export class ModalPayComponent implements OnInit {
 
     
   }
-  imprimir()
-  {
-    if(this.servicio.acciones=="jugar"){
-      let valapuesta=Number(this.servicio.valapuesta)
-      let valpata=Number(this.servicio.valpata)
-      let valunia=Number(this.servicio.valunia)
-      let total=valapuesta+valpata+valunia;
-      let totals=String(total);
-      let dato="0001"+"+"+this.servicio.loteria+"+"+this.servicio.numero+"+"+this.servicio.tipo+"+"+this.servicio.valapuesta+"+"+this.servicio.valpata+"+"+this.servicio.valunia+"+"+totals;
-      this.servicio.hubConnection.invoke("SendMessage", "chance",dato);
-      this.servicio.hubConnection.invoke("SendMessage", "imprimir", "");
-    
-    }else if(this.servicio.acciones=="recargas"){
-      
-      let dato="0001"+"+"+this.servicio.operador+"+"+this.servicio.numeroCelular+"+"+this.servicio.valrecarga;
-      this.servicio.hubConnection.invoke("SendMessage", "recarga",dato);
-      this.servicio.hubConnection.invoke("SendMessage", "imprimir","");
-    
-    }
-    if(this.servicio.acciones=="giros"){
-      let dato="0001"+"+"+this.servicio.numeroCelular+"+"+this.servicio.cedulaRemitente+"+"+this.servicio.cedulaRecibe+"+"+this.servicio.valgiro;
-      this.servicio.hubConnection.invoke("SendMessage", "giro",dato);
-      this.servicio.hubConnection.invoke("SendMessage", "imprimir","");
-    
-    }
-    
-  }
+
+
   redirect(){
+
 
     
     this.router.navigate(['/warning'], {  });
@@ -135,9 +159,10 @@ export class ModalPayComponent implements OnInit {
     this.servicio.valpata=""
     this.servicio.valunia=""
     this.servicio.tipo=""
-    this.servicio.other=false;
+    this.servicio.pata=""
+    this.servicio.unia=""
+    this.servicio.fase=0
   }
- 
 
 
 }

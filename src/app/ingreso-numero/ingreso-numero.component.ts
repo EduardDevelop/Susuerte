@@ -23,6 +23,7 @@ export class IngresoNumeroComponent implements OnInit {
  valores=[];
   input = new FormControl('', [Validators.required]);
   ngOnInit(): void {
+  
     if(this.servicio.acciones=="jugar"&&this.servicio.other==true){
       var intro = document.getElementById('intro');
       intro.style.display='none';
@@ -176,17 +177,17 @@ if(this.servicio.other==true){
         this.valores[5]=0;
     
       }
+      
       if(this.servicio.acciones=="jugar"&&this.servicio.juego=="4"){
         if(this.servicio.pata=="si"&&this.servicio.unia=='no'){
-          console.log("fase2");
-          
+        
           this.servicio.fase=2;
         }else if(this.servicio.pata=="si"&&this.servicio.unia=='si'){
           this.servicio.fase=3;
         }else if(this.servicio.pata=="no"&&this.servicio.unia=='si'){
           this.servicio.fase=4;
         }
-      }else   if(this.servicio.acciones=="juego"&&this.servicio.juego=="3"){
+      }else   if(this.servicio.acciones=="jugar"&&this.servicio.juego=="3"){
         if(this.servicio.pata=="si"&&this.servicio.unia=='no'){
           this.servicio.fase=2;
         }else if(this.servicio.pata=="si"&&this.servicio.unia=='si'){
@@ -196,13 +197,31 @@ if(this.servicio.other==true){
         }
 
       }
-      this.servicio.valapuesta=this.valores.join('');
+    
+      
 
       if(this.valores.length>=4){
+        
+        
+        
+        if(this.servicio.titulo=="apuesta"){
+          this.servicio.valapuesta=this.valores.join('');
+         
+          let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
+          this.servicio.titulo="apuesta"
+        }else if(this.servicio.titulo=='pata'){
+        
+          this.servicio.valpata=this.valores.join('');
+          let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valpata}, disableClose: true});
+          this.servicio.titulo="pata"
+        }else if(this.servicio.titulo=="unia"){
+          
+          this.servicio.valunia=this.valores.join('');
+          let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valunia}, disableClose: true});
+
+        }        
         this.valores=[];
         this.input.setValue("");
-        let dialogRef = this.dialog.open(ModalPayComponent,{data: {val:this.servicio.valapuesta}, disableClose: true});
-        
         this.servicio.other=false;
       }else{
         this.snackBar.open('⚠️ No se pueden ingresar valores menores a $1000⚠️', '', {
@@ -348,7 +367,7 @@ if(this.servicio.other==true){
 
  
 
-
+this.valores=[];
 
 
   }
